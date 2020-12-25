@@ -5,7 +5,7 @@ from app.models import Cliente
 
 @login_required
 def home(request):
-    cliente = Cliente.objects.all().order_by('data_cadastro').filter(user=request.user)
+    cliente = Cliente.objects.all().order_by('-data_cadastro').filter(user=request.user)
     return render(request, 'app/home.html', {'cliente': cliente})
 
 
