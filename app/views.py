@@ -5,7 +5,7 @@ from app.models import Cliente
 
 @login_required
 def home(request):
-    cliente = Cliente.objects.all()
+    cliente = Cliente.objects.all().order_by('data_cadastro').filter(user=request.user)
     return render(request, 'app/home.html', {'cliente': cliente})
 
 
@@ -28,6 +28,7 @@ def editar(request, id):
 
 
 
+@login_required
 def cadastrar(request):
     if request.method == "POST":
         form = ClienteForm(request.POST)
@@ -42,8 +43,8 @@ def cadastrar(request):
         form = ClienteForm()
         return render(request, 'app/cadastrar.html', {'form': form})
 
-
-def deletar(id):
-    task = get_object_or_404(Cliente, pk=id)
-    task.delete()
+@login_required
+def deletar(request, id):
+    cliente = get_object_or_404(Cliente, pk=id)
+    cliente.delete()
     return redirect('/')

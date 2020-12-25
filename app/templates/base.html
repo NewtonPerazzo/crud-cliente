@@ -1,10 +1,10 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock%}</title>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="app/static/css/style.css'%}">
 </head>
 <body>
     <div class="container-fluid">
@@ -32,20 +32,24 @@
                     {% endif %}
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/accounts/logout">Logout</a>
+                            <a class="nav-link" href="/accounts/logout">Sair</a>
                         </li>
                     {% endif %}
                 </ul>
             </div>
         </nav>
+
         {% block content %}
         {% endblock %}
+
         <footer>
-            <p> Newton Perazzo - To Do </p>
+            <p> Desenvolvido por
+                <a href="https://www.linkedin.com/in/newton-perazzo/">
+                    Newton Perazzo
+                </a>
+            </p>
         </footer>
     </div>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
 </body>
 </html>
